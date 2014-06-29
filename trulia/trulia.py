@@ -56,3 +56,21 @@ class Trulia(object):
         counties = results["TruliaWebServices"]["response"]["LocationInfo"]["county"]
 
         return counties
+
+    def get_neighborhoods_in_city(self, city, state):
+        """This function returns an OrderedDict of all neighborhoods in a city"""
+
+        url = "http://api.trulia.com/webservices.php"
+        payload = {
+            "library": "LocationInfo",
+            "function": "getNeighborhoodsInCity",
+            "city": city,
+            "state": state,
+            "apikey": self.api_key
+        }
+        xml = requests.get(url, params=payload)
+
+        results = xmltodict.parse(xml.content)
+        neighborhoods = results["TruliaWebServices"]["response"]["LocationInfo"]["neighborhood"]
+
+        return neighborhoods
