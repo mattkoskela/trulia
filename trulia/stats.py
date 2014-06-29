@@ -69,3 +69,23 @@ class TruliaStats(object):
         county_stats = results["TruliaWebServices"]["response"]["TruliaStats"]
 
         return county_stats
+
+    def get_neighborhood_stats(self, neighborhood_id, start_date, end_date, stat_type="all"):
+        """This method returns an OrderedDict of all stats for a neighborhood"""
+
+        url = "http://api.trulia.com/webservices.php"
+        payload = {
+            "library": "TruliaStats",
+            "function": "getCountyStats",
+            "neighborhoodId": neighborhood_id,
+            "startDate": start_date,
+            "endDate": end_date,
+            "statType": stat_type,
+            "apikey": self.api_key
+        }
+        xml = requests.get(url, params=payload)
+
+        results = xmltodict.parse(xml.content)
+        neighborhood_stats = results["TruliaWebServices"]["response"]["TruliaStats"]
+
+        return neighborhood_stats
