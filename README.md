@@ -8,6 +8,7 @@ Python library for accessing Trulia's REST API
 
 ## Usage
 
+    import trulia.stats
     import trulia.location
 
     TRULIA_KEY = "RELACE_WITH_YOUR_API_KEY"
@@ -25,6 +26,9 @@ Python library for accessing Trulia's REST API
 
     # Get all zip codes in California
     zip_codes = trulia.location.LocationInfo(TRULIA_KEY).get_zip_codes_in_state("CA")
+
+    # Get all traffic and listing stats for Los Angeles
+    stats = trulia.stats.TruliaStats(TRULIA_KEY).get_city_stats("Los Angeles", "CA")
 
 ## Documentation
 
