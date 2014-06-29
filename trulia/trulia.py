@@ -16,22 +16,26 @@ This file contains functions for each Trulia API call
 import requests
 import xmltodict
 
-API_KEY = "b9735tmvu3y3w9qs8hajydbe"
 
+class Trulia(object):
+    """The Trulia class is used to interact with the Trulia API"""
 
-def get_cities_by_state(state):
-    """This function returns an OrderedDict of all cities in a state"""
+    def __init__(self, api_key):
+        self.api_key = api_key
 
-    url = "http://api.trulia.com/webservices.php"
-    payload = {
-        "library": "LocationInfo",
-        "function": "getCitiesInState",
-        "state": state,
-        "apikey": API_KEY
-    }
-    xml = requests.get(url, params=payload)
+    def get_cities_in_state(self, state):
+        """This function returns an OrderedDict of all cities in a state"""
 
-    results = xmltodict.parse(xml.content)
-    cities = results["TruliaWebServices"]["response"]["LocationInfo"]["city"]
+        url = "http://api.trulia.com/webservices.php"
+        payload = {
+            "library": "LocationInfo",
+            "function": "getCitiesInState",
+            "state": state,
+            "apikey": self.api_key
+        }
+        xml = requests.get(url, params=payload)
 
-    return cities
+        results = xmltodict.parse(xml.content)
+        cities = results["TruliaWebServices"]["response"]["LocationInfo"]["city"]
+
+        return cities

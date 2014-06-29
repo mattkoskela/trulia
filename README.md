@@ -9,7 +9,7 @@ Python library for accessing Trulia's REST API
 ## Usage
 
     from trulia import trulia
-    cities = trulia.get_cities_by_state("CA")
+    cities = trulia.Trulia("{RELACE_WITH_YOUR_API_KEY}").get_cities_in_state("CA")
 
 ## Documentation
 
