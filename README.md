@@ -12,6 +12,7 @@ Python library for accessing Trulia's REST API
     import trulia.location
 
     TRULIA_KEY = "RELACE_WITH_YOUR_API_KEY"
+
     # Get all cities in California
     cities = trulia.location.LocationInfo(TRULIA_KEY).get_cities_in_state("CA")
 
@@ -27,8 +28,11 @@ Python library for accessing Trulia's REST API
     # Get all zip codes in California
     zip_codes = trulia.location.LocationInfo(TRULIA_KEY).get_zip_codes_in_state("CA")
 
-    # Get all traffic and listing stats for Los Angeles
-    stats = trulia.stats.TruliaStats(TRULIA_KEY).get_city_stats("Los Angeles", "CA")
+    # Get all traffic and listing stats for the city of Los Angeles in January 2014
+    city_stats = trulia.stats.TruliaStats(TRULIA_KEY).get_city_stats(city="Los Angeles", state="CA", start_date="2014-01-01", end_date="2014-01-31")
+
+    # Get all traffic and listing stats for Santa Clara county in January 2014
+    county_stats = trulia.stats.TruliaStats(TRULIA_KEY).get_county_stats(city="Santa Clara", state="CA", start_date="2014-01-01", end_date="2014-01-31")
 
 ## Documentation
 

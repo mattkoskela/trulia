@@ -28,8 +28,8 @@ class TruliaStats(object):
     def __init__(self, api_key):
         self.api_key = api_key
 
-    def get_city_stats(self, city, state, start_date=None, end_date=None, stat_type="all"):
-        """This method returns an OrderedDict of all cities in a state"""
+    def get_city_stats(self, city, state, start_date, end_date, stat_type="all"):
+        """This method returns an OrderedDict of all stats for a city"""
 
         url = "http://api.trulia.com/webservices.php"
         payload = {
@@ -48,3 +48,24 @@ class TruliaStats(object):
         city_stats = results["TruliaWebServices"]["response"]["TruliaStats"]
 
         return city_stats
+
+    def get_county_stats(self, county, state, start_date, end_date, stat_type="all"):
+        """This method returns an OrderedDict of all stats for a county"""
+
+        url = "http://api.trulia.com/webservices.php"
+        payload = {
+            "library": "TruliaStats",
+            "function": "getCountyStats",
+            "county": county,
+            "state": state,
+            "startDate": start_date,
+            "endDate": end_date,
+            "statType": stat_type,
+            "apikey": self.api_key
+        }
+        xml = requests.get(url, params=payload)
+
+        results = xmltodict.parse(xml.content)
+        county_stats = results["TruliaWebServices"]["response"]["TruliaStats"]
+
+        return county_stats
