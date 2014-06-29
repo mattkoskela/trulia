@@ -1,30 +1,35 @@
 #!/usr/local/bin/python
 
 ##
-# This file contains functions for each Trulia API call
+# This file contains an interface for Trulia's LocationInfo Library.
 #
 # @package     trulia
 # @author      Matt Koskela <mattkoskela@gmail.com>
 ##
 
 """
-trulia.py
+location.py
 
-This file contains functions for each Trulia API call
+This file contains an interface for Trulia's LocationInfo Library.
+
+Documentation about Trulia's LocationInfo Library can be found here:
+http://developer.trulia.com/docs/read/LocationInfo
 """
 
 import requests
 import xmltodict
 
 
-class Trulia(object):
-    """The Trulia class is used to interact with the Trulia API"""
+class LocationInfo(object):
+    """
+    The LocationInfo class is used to retrieve location data from the Trulia API
+    """
 
     def __init__(self, api_key):
         self.api_key = api_key
 
     def get_cities_in_state(self, state):
-        """This function returns an OrderedDict of all cities in a state"""
+        """This method returns an OrderedDict of all cities in a state"""
 
         url = "http://api.trulia.com/webservices.php"
         payload = {
@@ -41,7 +46,7 @@ class Trulia(object):
         return cities
 
     def get_counties_in_state(self, state):
-        """This function returns an OrderedDict of all counties in a state"""
+        """This method returns an OrderedDict of all counties in a state"""
 
         url = "http://api.trulia.com/webservices.php"
         payload = {
@@ -58,7 +63,7 @@ class Trulia(object):
         return counties
 
     def get_neighborhoods_in_city(self, city, state):
-        """This function returns an OrderedDict of all neighborhoods in a city"""
+        """This method returns an OrderedDict of all neighborhoods in a city"""
 
         url = "http://api.trulia.com/webservices.php"
         payload = {
@@ -76,7 +81,7 @@ class Trulia(object):
         return neighborhoods
 
     def get_states(self):
-        """This function returns an OrderedDict of all states in the US"""
+        """This method returns an OrderedDict of all states in the US"""
 
         url = "http://api.trulia.com/webservices.php"
         payload = {
@@ -92,7 +97,7 @@ class Trulia(object):
         return states
 
     def get_zip_codes_in_state(self, state):
-        """This function returns an OrderedDict of all zipcodes in a state"""
+        """This method returns an OrderedDict of all zipcodes in a state"""
 
         url = "http://api.trulia.com/webservices.php"
         payload = {
