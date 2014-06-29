@@ -109,3 +109,23 @@ class TruliaStats(object):
         state_stats = results["TruliaWebServices"]["response"]["TruliaStats"]
 
         return state_stats
+
+    def get_zip_code_stats(self, zip_code, start_date, end_date, stat_type="all"):
+        """This method returns an OrderedDict of all stats for a zip_code"""
+
+        url = "http://api.trulia.com/webservices.php"
+        payload = {
+            "library": "TruliaStats",
+            "function": "getZipCodeStats",
+            "zipCode": zip_code,
+            "startDate": start_date,
+            "endDate": end_date,
+            "statType": stat_type,
+            "apikey": self.api_key
+        }
+        xml = requests.get(url, params=payload)
+
+        results = xmltodict.parse(xml.content)
+        zip_code_stats = results["TruliaWebServices"]["response"]["TruliaStats"]
+
+        return zip_code_stats

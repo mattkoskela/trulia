@@ -40,6 +40,9 @@ Python library for accessing Trulia's REST API
     # Get all traffic and listing stats for California in January 2014
     state_stats = trulia.stats.TruliaStats(TRULIA_KEY).get_state_stats(state="CA", start_date="2014-01-01", end_date="2014-01-31")
 
+    # Get all traffic and listing stats for the 90025 zip code in January 2014
+    zip_code_stats = trulia.stats.TruliaStats(TRULIA_KEY).get_zip_code_stats(zip_code="90025", start_date="2014-01-01", end_date="2014-01-31")
+
 ## Documentation
 
 Trulia's API documentation can be found here: http://developer.trulia.com/docs
