@@ -1,1 +1,2 @@
 v0.0.1, 2014-06-16 -- Initial commit with package structure and get_cities_by_state() implemented
+v0.0.2, 2014-06-29 -- Finished LocationInfo class
