@@ -90,3 +90,20 @@ class Trulia(object):
         states = results["TruliaWebServices"]["response"]["LocationInfo"]["state"]
 
         return states
+
+    def get_zip_codes_in_state(self, state):
+        """This function returns an OrderedDict of all zipcodes in a state"""
+
+        url = "http://api.trulia.com/webservices.php"
+        payload = {
+            "library": "LocationInfo",
+            "function": "getZipCodesInState",
+            "state": state,
+            "apikey": self.api_key
+        }
+        xml = requests.get(url, params=payload)
+
+        results = xmltodict.parse(xml.content)
+        zip_codes = results["TruliaWebServices"]["response"]["LocationInfo"]["zipCode"]
+
+        return zip_codes
