@@ -5,7 +5,7 @@ except ImportError:
 
 setup(
     name="trulia",
-    version="0.0.2",
+    version="0.0.3dev",
     author="Matt Koskela",
     author_email="mattkoskela@gmail.com",
     packages=["trulia"],
