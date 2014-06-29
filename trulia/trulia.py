@@ -74,3 +74,19 @@ class Trulia(object):
         neighborhoods = results["TruliaWebServices"]["response"]["LocationInfo"]["neighborhood"]
 
         return neighborhoods
+
+    def get_states(self):
+        """This function returns an OrderedDict of all states in the US"""
+
+        url = "http://api.trulia.com/webservices.php"
+        payload = {
+            "library": "LocationInfo",
+            "function": "getStates",
+            "apikey": self.api_key
+        }
+        xml = requests.get(url, params=payload)
+
+        results = xmltodict.parse(xml.content)
+        states = results["TruliaWebServices"]["response"]["LocationInfo"]["state"]
+
+        return states
