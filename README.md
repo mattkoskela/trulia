@@ -34,8 +34,11 @@ Python library for accessing Trulia's REST API
     # Get all traffic and listing stats for Santa Clara county in January 2014
     county_stats = trulia.stats.TruliaStats(TRULIA_KEY).get_county_stats(city="Santa Clara", state="CA", start_date="2014-01-01", end_date="2014-01-31")
 
-    # Get all traffic and listing stats for Venice, CA neightborhood in January 2014
-    venice_stats = trulia.stats.TruliaStats(TRULIA_KEY).get_neighborhood_stats(neighborhood_id=7183, start_date="2014-01-01", end_date="2014-01-31")
+    # Get all traffic and listing stats for Venice, CA neighborhood in January 2014
+    neighborhood_stats = trulia.stats.TruliaStats(TRULIA_KEY).get_neighborhood_stats(neighborhood_id=7183, start_date="2014-01-01", end_date="2014-01-31")
+
+    # Get all traffic and listing stats for California in January 2014
+    state_stats = trulia.stats.TruliaStats(TRULIA_KEY).get_state_stats(state="CA", start_date="2014-01-01", end_date="2014-01-31")
 
 ## Documentation
 
