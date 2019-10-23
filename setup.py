@@ -14,7 +14,7 @@ setup(
     description="Python library for accessing trulia.com's REST API",
     long_description=open("README.md").read(),
     install_requires=[
-        "requests==2.3.0",
+        "requests==2.20.0",
         "xmltodict==0.9.0"
     ]
 )
